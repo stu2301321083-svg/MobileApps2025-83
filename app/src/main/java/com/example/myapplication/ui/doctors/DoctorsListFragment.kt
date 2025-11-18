@@ -10,6 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.databinding.FragmentDoctorsListBinding
 import com.example.myapplication.ui.doctors.DoctorViewModel
 import com.example.myapplication.utils.collectWhileStarted
+import android.app.AlertDialog
+import android.widget.EditText
+import com.example.myapplication.R
 
 class DoctorsListFragment : Fragment() {
 
@@ -41,7 +44,27 @@ class DoctorsListFragment : Fragment() {
         }
 
         binding.btnAddDoctor.setOnClickListener {
-            // TODO: открытие диалога добавления доктора
+            val dialogView = layoutInflater.inflate(
+                R.layout.dialog_add_doctor,
+                null
+            )
+
+            val edtName = dialogView.findViewById<EditText>(R.id.edtName)
+            val edtSpec = dialogView.findViewById<EditText>(R.id.edtSpec)
+
+            AlertDialog.Builder(requireContext())
+                .setTitle("Add Doctor")
+                .setView(dialogView)
+                .setPositiveButton("Add") { _, _ ->
+                    val name = edtName.text.toString()
+                    val spec = edtSpec.text.toString()
+
+                    if (name.isNotBlank() && spec.isNotBlank()) {
+                        viewModel.addDoctor(name, spec)
+                    }
+                }
+                .setNegativeButton("Cancel", null)
+                .show()
         }
     }
 

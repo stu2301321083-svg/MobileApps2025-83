@@ -6,8 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.data.entity.DoctorEntity
 import com.example.myapplication.databinding.ItemDoctorBinding
 
-class DoctorsAdapter :
-    RecyclerView.Adapter<DoctorsAdapter.DoctorViewHolder>() {
+class DoctorsAdapter(
+    private val onEdit: (DoctorEntity) -> Unit,
+    private val onDelete: (DoctorEntity) -> Unit
+) : RecyclerView.Adapter<DoctorsAdapter.DoctorViewHolder>() {
 
     private var items: List<DoctorEntity> = emptyList()
 
@@ -28,8 +30,19 @@ class DoctorsAdapter :
 
     override fun onBindViewHolder(holder: DoctorViewHolder, position: Int) {
         val item = items[position]
+
         holder.binding.txtName.text = item.name
         holder.binding.txtSpec.text = item.specialization
+
+        // КНОПКА EDIT
+        holder.binding.btnEdit.setOnClickListener {
+            onEdit(item)
+        }
+
+        // КНОПКА DELETE
+        holder.binding.btnDelete.setOnClickListener {
+            onDelete(item)
+        }
     }
 
     override fun getItemCount(): Int = items.size

@@ -8,11 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.databinding.FragmentDoctorsListBinding
-import com.example.myapplication.ui.doctors.DoctorViewModel
+//import com.example.myapplication.ui.doctors.DoctorViewModel
 import com.example.myapplication.utils.collectWhileStarted
 import android.app.AlertDialog
 import android.widget.EditText
 import com.example.myapplication.R
+import com.example.myapplication.data.entity.DoctorEntity
+//import com.example.myapplication.ui.doctors.DoctorsAdapter
 
 class DoctorsListFragment : Fragment() {
 
@@ -23,6 +25,35 @@ class DoctorsListFragment : Fragment() {
 
     private lateinit var adapter: DoctorsAdapter
 
+    private fun showEditDialog(doctor: DoctorEntity) {
+        val dialogView = layoutInflater.inflate(R.layout.dialog_add_doctor, null)
+
+        val edtName = dialogView.findViewById<EditText>(R.id.edtName)
+        val edtSpec = dialogView.findViewById<EditText>(R.id.edtSpec)
+
+        // заполняем текущими данными
+        edtName.setText(doctor.name)
+        edtSpec.setText(doctor.specialization)
+
+        AlertDialog.Builder(requireContext())
+            .setTitle("Edit Doctor")
+            .setView(dialogView)
+            .setPositiveButton("Update") { _, _ ->
+                val newName = edtName.text.toString()
+                val newSpec = edtSpec.text.toString()
+
+                if (newName.isNotBlank() && newSpec.isNotBlank()) {
+                    val updated = doctor.copy(
+                        name = newName,
+                        specialization = newSpec
+                    )
+
+                    viewModel.updateDoctor(updated)
+                }
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -35,7 +66,14 @@ class DoctorsListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adapter = DoctorsAdapter()
+        adapter = DoctorsAdapter(
+            onEdit = { doctor ->
+                showEditDialog(doctor)
+            },
+            onDelete = { doctor ->
+                viewModel.deleteDoctor(doctor)
+            }
+        )
         binding.recyclerDoctors.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerDoctors.adapter = adapter
 

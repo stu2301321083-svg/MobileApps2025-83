@@ -10,15 +10,15 @@
         android:id="@+id/txtName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Doctor name"
+        android:text="Pet name"
         android:textSize="18sp"
         android:textStyle="bold"/>
 
     <TextView
-        android:id="@+id/txtSpec"
+        android:id="@+id/txtType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Specialization"
+        android:text="Type"
         android:textSize="14sp"
         android:paddingTop="4dp"/>
 

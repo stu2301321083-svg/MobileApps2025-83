@@ -65,7 +65,13 @@ class PetsListFragment : Fragment() {
 
         adapter = PetsAdapter(
             onEdit = { pet -> showEditDialog(pet) },
-            onDelete = { pet -> viewModel.deletePet(pet) }
+            onDelete = { pet -> viewModel.deletePet(pet) },
+            onQR = { pet ->
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.mainContainer, PetQRFragment.newInstance(pet))
+                    .addToBackStack(null)
+                    .commit()
+            }
         )
 
         binding.recyclerPets.layoutManager = LinearLayoutManager(requireContext())

@@ -8,7 +8,8 @@ import com.example.myapplication.databinding.ItemPetBinding
 
 class PetsAdapter(
     private val onEdit: (PetEntity) -> Unit,
-    private val onDelete: (PetEntity) -> Unit
+    private val onDelete: (PetEntity) -> Unit,
+    private val onQR: (PetEntity) -> Unit
 ) : RecyclerView.Adapter<PetsAdapter.PetViewHolder>() {
 
     private var items: List<PetEntity> = emptyList()
@@ -39,6 +40,9 @@ class PetsAdapter(
         }
         holder.binding.btnDelete.setOnClickListener {
             onDelete(item)
+        }
+        holder.binding.btnQR.setOnClickListener {
+            onQR(item)
         }
     }
 

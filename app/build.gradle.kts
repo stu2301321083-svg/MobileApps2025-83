@@ -61,4 +61,6 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-common-java8:2.7.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     implementation("androidx.fragment:fragment-ktx:1.6.2")
+    implementation("com.google.zxing:core:3.5.3")
+    implementation("com.journeyapps:zxing-android-embedded:4.3.0")
 }

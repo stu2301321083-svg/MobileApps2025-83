@@ -45,24 +45,66 @@ All data persists after app restart thanks to the Room database.
   •	Custom adapters for RecyclerView
 
 ## 4. Project Structure
-app/
-├─ data/
-│   ├─ dao/
-│   ├─ db/
-│   ├─ entity/
-│   └─ repository/
-├─ ui/
-│   ├─ doctors/
-│   ├─ pets/
-│   ├─ appointments/
-│   └─ main/
-├─ utils/
+MobileApps2025-83/
+│
 ├─ apk/
-├─ AndroidManifest.xml
+│   └─ app-release.apk
+│
+├─ app/
+│   ├─ build/
+│   ├─ src/
+│   │   ├─ main/
+│   │   │   ├─ java/com/example/myapplication/
+│   │   │   │   ├─ data/
+│   │   │   │   │   ├─ dao/
+│   │   │   │   │   │   ├─ DoctorDao.kt
+│   │   │   │   │   │   ├─ PetDao.kt
+│   │   │   │   │   │   └─ AppointmentDao.kt
+│   │   │   │   │   ├─ db/
+│   │   │   │   │   │   ├─ DatabaseProvider.kt
+│   │   │   │   │   │   └─ AppDatabase.kt
+│   │   │   │   │   ├─ entity/
+│   │   │   │   │   │   ├─ DoctorEntity.kt
+│   │   │   │   │   │   ├─ PetEntity.kt
+│   │   │   │   │   │   └─ AppointmentEntity.kt
+│   │   │   │   │   └─ repository/
+│   │   │   │   │       ├─ DoctorRepository.kt
+│   │   │   │   │       ├─ PetRepository.kt
+│   │   │   │   │       └─ AppointmentRepository.kt
+│   │   │   │   ├─ ui/
+│   │   │   │   │   ├─ doctors/
+│   │   │   │   │   │   ├─ DoctorsListFragment.kt
+│   │   │   │   │   │   ├─ DoctorsAdapter.kt
+│   │   │   │   │   │   └─ DoctorViewModel.kt
+│   │   │   │   │   ├─ pets/
+│   │   │   │   │   │   ├─ PetsListFragment.kt
+│   │   │   │   │   │   ├─ PetsAdapter.kt
+│   │   │   │   │   │   ├─ PetViewModel.kt
+│   │   │   │   │   │   └─ PetQRFragment.kt
+│   │   │   │   │   ├─ appointments/
+│   │   │   │   │   │   ├─ AppointmentsListFragment.kt
+│   │   │   │   │   │   ├─ AppointmentsAdapter.kt
+│   │   │   │   │   │   └─ AppointmentViewModel.kt
+│   │   │   │   │   └─ main/
+│   │   │   │   │       └─ MainActivity.kt
+│   │   │   │   ├─ utils/
+│   │   │   │   │   └─ FlowExt.kt
+│   │   │   │   └─ AndroidManifest.xml
+│   │   │   ├─ res/
+│   │   │   │   ├─ layout/
+│   │   │   │   ├─ values/
+│   │   │   │   ├─ drawable/
+│   │   │   │   └─ mipmap/
+│   │   └─ test/
+│   ├─ build.gradle.kts
+│   └─ proguard-rules.pro
+│
+├─ build.gradle.kts
+├─ settings.gradle.kts
 └─ README.md
 
 ## 5. User flow
-	1.	Launch Application
+1.	Launch Application
 → Bottom navigation appears (Doctors / Pets / Appointments)
 2.	Doctors Screen
 → View list → Add → Edit → Delete
@@ -78,7 +120,8 @@ app/
 → Instantly restored on next launch
 
 
-## 5. Steps to run
+## 6. Steps to run
+
 1. Clone the repository:
 ```bash
    git clone https://github.com/stu2301321083-svg/MobileApps2025-83.git
@@ -106,9 +149,18 @@ Build → Generate Signed Bundle / APK
 
 ## 7. Screenshots
 
-•	Doctors tab list view
-•	Pets tab edit view
-•	Appointments tab creation view
+
+### Doctors
+![Doctors](screenshots/Doctors.png)
+
+### Pets
+![Pets](screenshots/Pets.png)
+
+### Appointments
+![Appointments](screenshots/Appointments.png)
+
+### QR code of pets
+![QR code](screenshots/QR%20code%20of%20pet.png)
 
 ## 8. APK
 
@@ -136,7 +188,7 @@ The release APK is located at:
 •	ViewBinding
 
 ## 11. License
-MIT License .
+MIT License 
 
 ## 12. Author
 Name:   Valeriia Dehtiarova

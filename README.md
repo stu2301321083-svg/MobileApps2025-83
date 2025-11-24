@@ -81,15 +81,15 @@ MobileApps2025-83/
 │   │   │   │   │   │   ├─ PetsAdapter.kt
 │   │   │   │   │   │   ├─ PetViewModel.kt
 │   │   │   │   │   │   └─ PetQRFragment.kt
-│   │   │   │   │   ├─ appointments/
-│   │   │   │   │   │   ├─ AppointmentsListFragment.kt
-│   │   │   │   │   │   ├─ AppointmentsAdapter.kt
-│   │   │   │   │   │   └─ AppointmentViewModel.kt
-│   │   │   │   │   └─ main/
-│   │   │   │   │       └─ MainActivity.kt
+│   │   │   │   │   └─ appointments/
+│   │   │   │   │      ├─ AppointmentsListFragment.kt
+│   │   │   │   │      ├─ AppointmentsAdapter.kt
+│   │   │   │   │      └─ AppointmentViewModel.kt
+│   │   │   │   │  
+│   │   │   │   │       
 │   │   │   │   ├─ utils/
 │   │   │   │   │   └─ FlowExt.kt
-│   │   │   │   └─ AndroidManifest.xml
+│   │   │   │   └─ MainActivity.kt
 │   │   │   ├─ res/
 │   │   │   │   ├─ layout/
 │   │   │   │   ├─ values/
@@ -162,20 +162,39 @@ Build → Generate Signed Bundle / APK
 ### QR code of pets
 ![QR code](screenshots/QR%20code%20of%20pet.png)
 
+
 ## 8. APK
 
 The release APK is located at:
 /apk/app-release.apk
 
-## 9. Additional Feature
+## 9. Tests
+The project includes both Unit Tests and UI Tests to satisfy the course requirement for test coverage:
+
+✔ Unit Tests (/app/src/test/)
+•	DoctorRepositoryTest – tests repository CRUD logic
+•	AppointmentViewModelTest – tests ViewModel creation logic
+•	ExampleUnitTest – basic JUnit test
+
+✔ UI Test (/app/src/androidTest/)
+•	MainActivityTest – verifies that the main screen and navigation load correctly
+
+Below are the executed test coverage reports:
+
+### Test run – single test
+![Single test coverage](screenshots/test_coverage_single.png)
+
+### Test run – full unitTest suite
+![Full test coverage](screenshots/test_coverage_all.png)
+
+## 10. Additional Feature
 
 ✔ QR Code generation for Pets
 •	Implemented with ZXing (com.journeyapps:zxing-android-embedded)
 •	Encoded JSON: {id, name, type}
 •	Full-screen preview with the PetQRFragment
-•	Fully satisfies “Допълнителна функционалност” requirement
 
-## 10. Technologies Used
+## 11. Technologies Used
 •	Kotlin
 •	AndroidX
 •	Material 3
@@ -187,10 +206,10 @@ The release APK is located at:
 •	MVVM + Repository pattern
 •	ViewBinding
 
-## 11. License
+## 12. License
 MIT License 
 
-## 12. Author
+## 13. Author
 Name:   Valeriia Dehtiarova
 Faculty number:  2301321083
 GitHub: https://github.com/stu2301321083-svg
